@@ -9,7 +9,44 @@ stories:
   steps:
   - intent: order_shoes
   - action: utter_order_shoes
+###########################################################################  
+# - story: User asks for product_categories
+#   steps:
+#   - intent: product_categories
+#   - action: utter_product_categories
+#   - action: action_deactivate_loop
+#   - active_loop: null
 
+# - story: Activate women shoes form
+#   steps:
+#   - intent: product_stock
+#   - action: utter_product_categories
+#   - intent: gender_selection
+#   - action: utter_product_selection
+#   - intent: shoe_category
+#   - action: women_shoes_form
+#   - active_loop: women_shoes_form
+  
+# - story: women shoes form
+#   steps:
+#   - active_loop: women_shoes_form
+#   - action: women_shoes_form
+#   - active_loop: null
+#   - slot_was_set:
+#       - requested_slot: null
+#   - action: utter_submit
+#   - action: utter_slot_values
+
+# - story: User asks for product_selection
+#   steps:
+#   - intent: product_selection
+#   - action: utter_product_selection
+#   - action: action_deactivate_loop
+#   - active_loop: null
+  
+
+  
+#######################################################################################
 # cancel stories
 
 - story: User stops product_stock
@@ -62,3 +99,34 @@ stories:
   steps:
   - intent: whats_your_name
   - action: action_give_name
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: product_categories
+  - action: utter_product_categories
+  - intent: product_selection
+  - action: utter_product_selection
+  - intent: nlu_fallback
+  - action: utter_default
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: product_categories
+  - action: utter_product_categories
+  - intent: product_selection
+  - action: utter_product_selection
+  - intent: nlu_fallback
+  - action: utter_default
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: product_categories
+  - action: utter_product_categories
+  - intent: product_categories
+  - action: utter_product_categories
+  - intent: product_categories

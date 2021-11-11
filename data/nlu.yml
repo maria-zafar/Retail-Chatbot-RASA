@@ -40,6 +40,103 @@ nlu:
     - do you have my special shoes in stock
     - Check inventory
     - i'm looking for new shoes
+    - Search for a product
+    - do you have any shoes?
+    - do you have any shirts?
+    - do you have any clothing?
+    - do you have any perfumes?
+    - what about shoes
+    - what's your catalogue
+    - do you have shirts for men?
+    - do you have shirts for women?
+    - do you have shorts for kids?
+    - check catalogue
+    - do you have my special shoes in stock
+    - Check catalogue
+    - i'm looking for new shoes
+    - i'm looking for new clothing
+    - i'm looking for new makeup
+    - i'm looking for new perfumes
+    - Search for Product
+    
+# - intent: boy_clothing_categories
+#   examples: |
+#     - do you have any shorts?
+#     - do you have any shirts?
+#     - do you have any pants?
+#     - do you have any sleep suits?
+# - intent: girl_clothing_categories
+#   examples: |
+#     - do you have any frocks?
+#     - do you have any shirts?
+#     - do you have any pants?
+#     - do you have any sleep suits?
+# - intent: men_bag_categories
+#   examples: |
+#     - do you have any brief case?
+#     - do you have any wallet?
+#     - do you have any back pack?
+#     - do you have any shoulder bag?
+# - intent: men_shoes_categories
+#   examples: |
+#     - do you have any pumps?
+#     - do you have any boots?
+#     - do you have any high heels?
+#     - do you have any flats?
+- intent: product_category
+  examples: |
+    - Shoes 
+    - Bags 
+    - Perfumes
+    - Clothing
+- intent: gender_selection
+  examples: |
+    - Men 
+    - Women 
+    - Kids
+
+    
+# - intent: women_bag_categories
+#   examples: |
+#     - do you have any tote?
+#     - do you have any clutch?
+#     - do you have any backpack?
+# - intent: product_categories
+#   examples: |
+#     - Search for a product
+#     - do you have any shoes?
+#     - do you have any shirts?
+#     - do you have any clothing?
+#     - do you have any perfumes?
+#     - what about shoes
+#     - what's your catalogue
+#     - do you have shirts for men?
+#     - do you have shirts for women?
+#     - do you have shorts for kids?
+#     - check catalogue
+#     - do you have my special shoes in stock
+#     - Check catalogue
+#     - i'm looking for new shoes
+#     - i'm looking for new clothing
+#     - i'm looking for new makeup
+#     - i'm looking for new perfumes
+#     - Search for Product
+    
+# - intent: gender_selection
+#   examples: |
+#     - Accessories for men
+#     - Accessories for women
+#     - Accessories for kids
+   
+    
+# - intent: product_selection
+#   examples: |
+#     - shoes for women
+#     - shirts for men
+#     - clothing for men
+#     - perfumes for women
+#     - shoes for kids
+#     - shoes for men
 - intent: product_updates
   examples: |
     - what's new on the site?

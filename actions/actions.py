@@ -1,3 +1,4 @@
+#from tensorflow import keras
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -8,6 +9,49 @@ import sqlite3
 
 # change this to the location of your SQLite file
 path_to_db = "actions/example.db"
+
+# class ActionProductOrder(Action):
+#     def name(self) -> Text:
+#         return "action_product_order"
+
+#     def run(
+#         self,
+#         dispatcher: CollectingDispatcher,
+#         tracker: Tracker,
+#         domain: Dict[Text, Any],
+#     ) -> List[Dict[Text, Any]]:
+
+#         # connect to DB
+#         connection = sqlite3.connect(path_to_db)
+#         cursor = connection.cursor()
+
+#         # # get slots and save as tuple
+#         # shoe = [(tracker.get_slot("color")), (tracker.get_slot("size"))]
+
+#          # get slots and save as tuple
+#         shoe = [(tracker.get_slot("product_category")),(tracker.get_slot("color")), (tracker.get_slot("size")), (tracker.get_slot("gender")), (tracker.get_slot("style"))]
+#         shoe_temp=shoe[1:3]
+#         # place cursor on correct row based on search criteria
+#         cursor.execute("SELECT * FROM inventory WHERE color=? AND size=?", shoe_temp)
+#         # cursor.execute("SELECT * FROM inventory")
+        
+#         # retrieve sqlite row
+#         data_row = cursor.fetchone()
+
+#         if data_row:
+#             # provide in stock message
+#             dispatcher.utter_message(template="utter_in_stock")
+#             dispatcher.utter_message(template="Do you want to place an order?")
+            
+#             connection.close()
+#             slots_to_reset = ["product_category", "size", "color","gender","style"]
+#             return [SlotSet(slot, None) for slot in slots_to_reset]
+#         else:
+#             # provide out of stock
+#             dispatcher.utter_message(template="utter_no_stock")
+#             connection.close()
+#             slots_to_reset = ["product_category", "size", "color","gender","style"]
+#             return [SlotSet(slot, None) for slot in slots_to_reset]
 
 class ActionProductSearch(Action):
     def name(self) -> Text:
@@ -24,11 +68,15 @@ class ActionProductSearch(Action):
         connection = sqlite3.connect(path_to_db)
         cursor = connection.cursor()
 
-        # get slots and save as tuple
-        shoe = [(tracker.get_slot("color")), (tracker.get_slot("size"))]
+        # # get slots and save as tuple
+        # shoe = [(tracker.get_slot("color")), (tracker.get_slot("size"))]
 
+         # get slots and save as tuple
+        shoe = [(tracker.get_slot("product_category")),(tracker.get_slot("color")), (tracker.get_slot("size")), (tracker.get_slot("gender")), (tracker.get_slot("style"))]
+        shoe_temp=shoe[1:3]
         # place cursor on correct row based on search criteria
-        cursor.execute("SELECT * FROM inventory WHERE color=? AND size=?", shoe)
+        cursor.execute("SELECT * FROM inventory WHERE color=? AND size=?", shoe_temp)
+        # cursor.execute("SELECT * FROM inventory")
         
         # retrieve sqlite row
         data_row = cursor.fetchone()
@@ -37,13 +85,13 @@ class ActionProductSearch(Action):
             # provide in stock message
             dispatcher.utter_message(template="utter_in_stock")
             connection.close()
-            slots_to_reset = ["size", "color"]
+            slots_to_reset = ["product_category", "size", "color","gender","style"]
             return [SlotSet(slot, None) for slot in slots_to_reset]
         else:
             # provide out of stock
             dispatcher.utter_message(template="utter_no_stock")
             connection.close()
-            slots_to_reset = ["size", "color"]
+            slots_to_reset = ["product_category", "size", "color","gender","style"]
             return [SlotSet(slot, None) for slot in slots_to_reset]
 
 class SurveySubmit(Action):

@@ -15,6 +15,13 @@ rules:
     - intent: nlu_fallback
     - intent: out_of_scope
   - action: utter_default
+  
+# - rule: product category
+#   steps:
+#     - intent: product_categories
+#     - action: utter_product_categories
+#     - action: action_deactivate_loop
+#     - active_loop: null
 
 # order status
 
@@ -188,3 +195,34 @@ rules:
   - action: survey_form
   - active_loop: null
   - action: action_survey_submit
+  
+# - rule: Activate women shoes form
+#   steps:
+#   # - intent: product_categories
+#   - intent: women_shoes_categories
+#   - action: women_shoes_form
+#   - active_loop: women_shoes_form
+   
+
+#   #women shoes form
+# - rule: women shoes form
+#   condition:
+#   - active_loop: women_shoes_form
+#   steps:
+#   - action: women_shoes_form
+#   - active_loop: null
+#   - slot_was_set:
+#       - requested_slot: null
+#   - action: utter_submit
+#   - action: utter_slot_values
+    
+  #Interruption
+#- rule: Interuption in order form
+#  condition:
+#  - active_loop: simple_shoes_form
+#  steps:
+#  - intent: bot_challenge
+#  - action: utter_chitchat
+#  - action: simple_shoes_form
+#  - active_loop: simple_shoes_form
+  
