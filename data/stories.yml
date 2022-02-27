@@ -5,10 +5,10 @@ stories:
   - intent: greet
   - action: utter_greet
 
-- story: order shoes
-  steps:
-  - intent: order_shoes
-  - action: utter_order_shoes
+# - story: order shoes
+#   steps:
+#   - intent: order_shoes
+#   - action: utter_order_shoes
 ###########################################################################  
 # - story: User asks for product_categories
 #   steps:

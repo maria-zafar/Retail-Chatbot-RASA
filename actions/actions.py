@@ -28,7 +28,7 @@ path_to_db = "actions/example.db"
 #         # # get slots and save as tuple
 #         # shoe = [(tracker.get_slot("color")), (tracker.get_slot("size"))]
 
-#          # get slots and save as tuple
+#           # get slots and save as tuple
 #         shoe = [(tracker.get_slot("product_category")),(tracker.get_slot("color")), (tracker.get_slot("size")), (tracker.get_slot("gender")), (tracker.get_slot("style"))]
 #         shoe_temp=shoe[1:3]
 #         # place cursor on correct row based on search criteria
@@ -75,15 +75,25 @@ class ActionProductSearch(Action):
         shoe = [(tracker.get_slot("product_category")),(tracker.get_slot("color")), (tracker.get_slot("size")), (tracker.get_slot("gender")), (tracker.get_slot("style"))]
         shoe_temp=shoe[1:3]
         # place cursor on correct row based on search criteria
-        cursor.execute("SELECT * FROM inventory WHERE color=? AND size=?", shoe_temp)
+        cursor.execute("SELECT * FROM inventory WHERE color=? AND size=? AND product_category=? AND gender=? AND style=? ", shoe)
         # cursor.execute("SELECT * FROM inventory")
         
         # retrieve sqlite row
-        data_row = cursor.fetchone()
+        #data_row = cursor.fetchone()
+        data_row = cursor.fetchall()
 
         if data_row:
             # provide in stock message
-            dispatcher.utter_message(template="utter_in_stock")
+            
+            for row in data_row:
+                size = row[0][0]
+                color = row[0][1]
+                gender = row[0][2]
+                product_category = row[0][3]
+                style = row[0][4]
+                # dispatcher.utter_message(template="utter_in_stock")
+                dispatcher.utter_message(size, color, gender, product_category, style)
+                
             connection.close()
             slots_to_reset = ["product_category", "size", "color","gender","style"]
             return [SlotSet(slot, None) for slot in slots_to_reset]

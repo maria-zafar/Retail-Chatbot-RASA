@@ -196,6 +196,38 @@ rules:
   - active_loop: null
   - action: action_survey_submit
   
+  
+# place order
+
+- rule: Activate place order form for order 
+  steps:
+  - intent: order_shoes
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: place_order_form
+  - active_loop: place_order_form
+
+- rule: Submit place order form, survey complete
+  condition:
+  - active_loop: place_order_form
+  - slot_was_set:
+    - survey_complete: True
+  steps:
+  - action: place_order_form
+  - active_loop: null
+  - action: action_product_order
+
+- rule: Submit place order form, needs survey
+  condition:
+  - active_loop: place_order_form
+  steps:
+  - action: place_order_form
+  - active_loop: null
+  - action: action_product_order
+  - action: survey_form
+  - active_loop: survey_form
+
+  
 # - rule: Activate women shoes form
 #   steps:
 #   # - intent: product_categories
